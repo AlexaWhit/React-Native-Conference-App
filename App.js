@@ -2,11 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
+import ScheduleScreen from './screens/ScheduleScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DetailsScreen />
+      <ScheduleScreen />
     </View>
   );
 }
@@ -14,8 +15,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
