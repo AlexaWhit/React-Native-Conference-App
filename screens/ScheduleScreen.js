@@ -1,15 +1,7 @@
 import React from "react";
 import { View, Text, SectionList, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { mockData } from "../mockData";
-
-const singleItem = data => {
-  const item = data.item;
-  return(
-    <View style={styles.singleItem}>
-      <Text>{item.title}</Text>
-    </View>
-  );
-};
 
 const keyExtractor = item => item.id;
 
@@ -34,7 +26,18 @@ const listHeader = () => {
   );
 };
 
-const ScheduleScreen = () => {
+const ScheduleScreen = props => {
+  const singleItem = data => {
+    const item = data.item;
+    return(
+      <TouchableOpacity onPress={() => props.navigation.navigate("Details", { talkData: item})}>
+        <View style={styles.singleItem}>
+          <Text>{item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <SectionList

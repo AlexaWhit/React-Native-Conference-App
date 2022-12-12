@@ -1,29 +1,28 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacityBase, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ route }) => {
+  const talkData = route.params.talkData;
+
   return (
     <View style={styles.container}>
       <View style={styles.talkDetails}>
-        <Text style={styles.title}>Talk title</Text>
-        <Text style={styles.time}>Date & Time</Text>
-        <Text styles={styles.description}>Talk description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris varius
-            nisl sapien, a ullamcorper felis aliquam nec. Aliquam erat volutpat.
-            Donec eget risus pretium orci fermentum aliquam et pellentesque sem.
-            Maecenas luctus dictum odio, imperdiet pharetra felis accumsan quis.
-            Integer lobortis augue felis. Ut non dui gravida, luctus lectus non,
-            semper lectus.</Text>
+        <Text style={styles.title}>{talkData.title}</Text>
+        <Text style={styles.time}>{talkData.time}</Text>
+        <Text styles={styles.description}>{talkData.description}</Text>
       </View>
-      <View style={styles.speaker}>
-        <Image
-        style={styles.avatar}
-        source={{ uri: "https://picsum.photos/id/365/80/80.jpg"}}
+      {talkData.speaker && (
+        <View style={styles.speaker}>
+          <Image
+            style={styles.avatar}
+            source={{ uri: talkData.speaker.avatar }}
           />
-        <View>
-          <Text style={styles.speakerName}>Speaker name</Text>
-          <Text style={styles.speakerRole}>Job title</Text>
+          <View>
+            <Text style={styles.speakerName}>{talkData.speaker.name}</Text>
+            <Text style={styles.speakerRole}>{talkData.speaker.role}</Text>
+          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };
